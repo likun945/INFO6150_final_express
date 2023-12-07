@@ -13,9 +13,9 @@ dbService.connectToDatabase();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', (req, res) => {
-    return 'love you world'
-})
+app.get('/', (req, res) => {
+    res.send('Love you world');
+});
 app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000; // 使用 Heroku 提供的端口或默认到 3000
