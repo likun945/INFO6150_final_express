@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 const customResponseMiddleware = require('./middlewares/response');
 const dbService = require('./services/dbService');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 
 const app = express();
 app.use(customResponseMiddleware);
@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', routes);
 
-app.listen(3000, function () {
-    console.log('Server listening on port 3000');
+const PORT = process.env.PORT || 3000; // 使用 Heroku 提供的端口或默认到 3000
+app.listen(PORT, function () {
+    console.log(`Server listening on port ${PORT}`);
 });
